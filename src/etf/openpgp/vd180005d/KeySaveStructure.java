@@ -1,11 +1,25 @@
 package etf.openpgp.vd180005d;
 
 import java.security.KeyPair;
+import java.sql.Timestamp;
 
 public class KeySaveStructure {
 	private KeyPair keyPair;
 	private String ime;
 	private String password, mail;
+	private Timestamp time;
+	private long id;
+	private static long next=0;
+	public KeySaveStructure() {
+		id=next++;
+	}
+	
+	public Timestamp getTime() {
+		return time;
+	}
+	public void setTime(Timestamp time) {
+		this.time = time;
+	}
 	public KeyPair getKeyPair() {
 		return keyPair;
 	}
@@ -30,5 +44,7 @@ public class KeySaveStructure {
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
-	
+	public String toString() {
+		return "";
+	}
 }

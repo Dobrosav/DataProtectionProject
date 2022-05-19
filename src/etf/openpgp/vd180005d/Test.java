@@ -3,8 +3,10 @@ package etf.openpgp.vd180005d;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
+import java.security.NoSuchProviderException;
 import java.security.PrivateKey;
 import java.security.PublicKey;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import org.bouncycastle.util.encoders.Base64;
@@ -13,6 +15,7 @@ public class Test {
 	public static ArrayList<KeySaveStructure> keys= new ArrayList<KeySaveStructure>();
 	public void generate(int size, String mail, String name, String password) {
 		try {
+			Timestamp t=new Timestamp(System.currentTimeMillis());
 			KeyPairGenerator kpg= KeyPairGenerator.getInstance("DSA");
 			kpg.initialize(size);
 			KeyPair key=kpg.generateKeyPair();
@@ -23,6 +26,7 @@ public class Test {
 			kss.setKeyPair(key);
 			kss.setMail(mail);
 			kss.setPassword(password);
+			kss.setTime(t);
 			keys.add(kss);
 			String privateKey = new String(Base64.encode(priv.getEncoded(), 0,priv.getEncoded().length));
 			String publicKey1 = new String(Base64.encode(pub.getEncoded(), 0,pub.getEncoded().length));
@@ -32,7 +36,7 @@ public class Test {
 		} catch (NoSuchAlgorithmException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		} 
 		
 	}
 	public int delete(int id, String password) {
