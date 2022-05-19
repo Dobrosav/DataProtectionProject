@@ -35,7 +35,14 @@ public class Test {
 		}
 		
 	}
-
+	public int delete(int id, String password) {
+		KeySaveStructure kss=keys.get(id);
+		if(kss.getPassword().equals(password)) {
+			keys.remove(id);
+			return 0;
+		}
+		return 1;
+	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Test t= new Test();
