@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import org.bouncycastle.util.encoders.Base64;
 import etf.openpgp.vd180005d.KeySaveStructure;
 
-public class ElGamal {
+public class ElGamal extends AsymmetricKeys {
 	
 	public static ArrayList<KeySaveStructure> keys= new ArrayList<KeySaveStructure>();
 	
