@@ -19,5 +19,5 @@ public abstract class AsymmetricKeys {
 		return 1;
 	}
 	
-	abstract void generate (int size, String mail, String name, String password);
+	public abstract void generate (int size, String mail, String name, String password);
 }
