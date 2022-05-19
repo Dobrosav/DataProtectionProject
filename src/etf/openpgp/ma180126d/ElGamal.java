@@ -7,6 +7,7 @@ import java.security.NoSuchProviderException;
 import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.security.Security;
+import java.sql.Timestamp;
 
 import org.bouncycastle.util.encoders.Base64;
 import etf.openpgp.vd180005d.KeySaveStructure;
@@ -16,6 +17,7 @@ public class ElGamal extends AsymmetricKeys {
 	public void generate (int size, String mail, String name, String password) {
 		
 		try {
+			Timestamp time = new Timestamp(System.currentTimeMillis());
 			KeyPairGenerator kpg= KeyPairGenerator.getInstance("ELGAMAL", "BC");
 			kpg.initialize(size);
 			KeyPair key = kpg.generateKeyPair();
@@ -27,6 +29,7 @@ public class ElGamal extends AsymmetricKeys {
 			kss.setKeyPair(key);
 			kss.setMail(mail);
 			kss.setPassword(password);
+			kss.setTime(time);
 			keys.add(kss);
 			
 			String privateKey = new String(Base64.encode(priv.getEncoded(), 0,priv.getEncoded().length));
