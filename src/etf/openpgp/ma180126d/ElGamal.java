@@ -7,14 +7,11 @@ import java.security.NoSuchProviderException;
 import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.security.Security;
-import java.util.ArrayList;
 
 import org.bouncycastle.util.encoders.Base64;
 import etf.openpgp.vd180005d.KeySaveStructure;
 
 public class ElGamal extends AsymmetricKeys {
-	
-	public static ArrayList<KeySaveStructure> keys= new ArrayList<KeySaveStructure>();
 	
 	public void generate (int size, String mail, String name, String password) {
 		
