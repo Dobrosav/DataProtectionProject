@@ -10,10 +10,10 @@ public class KeySaveStructure {
 	private Timestamp time;
 	private long id;
 	private static long next=0;
+	private String algo;
 	public KeySaveStructure() {
 		id=next++;
 	}
-	
 	public Timestamp getTime() {
 		return time;
 	}
@@ -43,6 +43,13 @@ public class KeySaveStructure {
 	}
 	public void setMail(String mail) {
 		this.mail = mail;
+	}
+	
+	public String getAlgo() {
+		return algo;
+	}
+	public void setAlgo(String algo) {
+		this.algo = algo;
 	}
 	public String toString() {
 		return "";

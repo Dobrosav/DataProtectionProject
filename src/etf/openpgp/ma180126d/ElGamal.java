@@ -30,6 +30,7 @@ public class ElGamal extends AsymmetricKeys {
 			kss.setMail(mail);
 			kss.setPassword(password);
 			kss.setTime(time);
+			kss.setAlgo("Elgamal");
 			keys.add(kss);
 			
 			String privateKey = new String(Base64.encode(priv.getEncoded(), 0,priv.getEncoded().length));

@@ -28,6 +28,7 @@ public class DSA  extends AsymmetricKeys {
 			kss.setMail(mail);
 			kss.setPassword(password);
 			kss.setTime(t);
+			kss.setAlgo("DSA");
 			keys.add(kss);
 			String privateKey = new String(Base64.encode(priv.getEncoded(), 0,priv.getEncoded().length));
 			String publicKey1 = new String(Base64.encode(pub.getEncoded(), 0,pub.getEncoded().length));
