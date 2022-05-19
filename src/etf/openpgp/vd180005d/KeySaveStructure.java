@@ -51,6 +51,9 @@ public class KeySaveStructure {
 	public void setAlgo(String algo) {
 		this.algo = algo;
 	}
+	public long getId() {
+		return id;
+	}
 	public String toString() {
 		return "";
 	}

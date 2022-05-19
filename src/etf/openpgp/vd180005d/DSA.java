@@ -3,11 +3,9 @@ package etf.openpgp.vd180005d;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
-import java.security.NoSuchProviderException;
 import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.sql.Timestamp;
-import java.util.ArrayList;
 
 import org.bouncycastle.util.encoders.Base64;
 
@@ -45,6 +43,9 @@ public class DSA  extends AsymmetricKeys {
 		// TODO Auto-generated method stub
 		DSA t= new DSA();
 		t.generate(1024,"vlaskovic.dodo@gmail.com","dobrosav","1234");
+		t.exportPublicKey(0, "pub.asc");
+		t.exportPrivateKey(0, "priv.asc");
+		
 	}
 
 }
