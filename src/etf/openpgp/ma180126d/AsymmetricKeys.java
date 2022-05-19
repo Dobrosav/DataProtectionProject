@@ -1,15 +1,20 @@
 package etf.openpgp.ma180126d;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
 import java.security.Key;
 import java.util.ArrayList;
+
+import org.bouncycastle.util.encoders.Base64;
 
 import etf.openpgp.vd180005d.KeySaveStructure;
 import etf.openpgp.vd180005d.PemFile;
 
 public abstract class AsymmetricKeys {
-	private static final String descDSA = "BEGIN PGP PUBLIC KEY BLOCK";
-	private static final String descDSAP = "BEGIN PGP PRIVATE KEY BLOCK";
+	private static final String descDSA = "PGP PUBLIC KEY BLOCK";
+	private static final String descDSAP = "PGP PRIVATE KEY BLOCK";
 	public static ArrayList<KeySaveStructure> keys = new ArrayList<KeySaveStructure>();
 
 	public int delete(int id, String password) {
@@ -44,5 +49,16 @@ public abstract class AsymmetricKeys {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	public void importPublicKey(File file) throws IOException {
+	    String key = new String(Files.readAllBytes(file.toPath()), Charset.defaultCharset());
+
+	    String publicKeyPEM = key
+	      .replace("-----BEGIN PGP PUBLIC KEY BLOCK-----", "")
+	      .replaceAll(System.lineSeparator(), "")
+	      .replace("-----END PGP PUBLIC KEY BLOCK-----", "");
+
+	    byte[] encoded = Base64.decode(publicKeyPEM);
+	    System.out.println(encoded.toString());
 	}
 }
