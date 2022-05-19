@@ -35,7 +35,9 @@ public class Test {
 		}
 		
 	}
-
+	public void delete(int id) {
+		keys.remove(id);
+	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Test t= new Test();
