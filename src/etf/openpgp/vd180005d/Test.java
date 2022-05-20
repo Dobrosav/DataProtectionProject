@@ -6,7 +6,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 import java.security.PrivateKey;
 import java.security.PublicKey;
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import org.bouncycastle.util.encoders.Base64;
@@ -15,7 +15,7 @@ public class Test {
 	public static ArrayList<KeySaveStructure> keys= new ArrayList<KeySaveStructure>();
 	public void generate(int size, String mail, String name, String password) {
 		try {
-			Timestamp t=new Timestamp(System.currentTimeMillis());
+			LocalDateTime t=java.time.LocalDateTime.now();
 			KeyPairGenerator kpg= KeyPairGenerator.getInstance("DSA");
 			kpg.initialize(size);
 			KeyPair key=kpg.generateKeyPair();

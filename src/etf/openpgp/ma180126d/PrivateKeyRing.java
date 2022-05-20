@@ -4,29 +4,35 @@ import java.security.KeyPair;
 import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.security.Security;
-import java.security.Timestamp;
+import java.time.LocalDateTime;
 
 import org.bouncycastle.util.encoders.Base64;
 
 public class PrivateKeyRing {
-	private Timestamp time;
+	private LocalDateTime time;
 	private String keyID;
 	private KeyPair keyPair;
 	private PublicKey publicKey;
 	private PrivateKey privateKey;
 	private String userID;
 	
-	public PrivateKeyRing(Timestamp time, String userID, KeyPair keyPair) {
+	public PrivateKeyRing(LocalDateTime time, String userID, KeyPair keyPair) {
 		this.time = time;
 		this.userID = userID;
 		this.keyPair = keyPair;
+		
+		this.publicKey = this.keyPair.getPublic();
+		this.privateKey = this.keyPair.getPrivate();
+		
+		// set keyID
+		//this.keyID=this.publicKey & ((1 << 64) - 1);
 	}
 
-	public Timestamp getTime() {
+	public LocalDateTime getTime() {
 		return time;
 	}
 
-//	public void setTime(Timestamp time) {
+//	public void setTime(LocalDateTime time) {
 //		this.time = time;
 //	}
 	
@@ -34,14 +40,14 @@ public class PrivateKeyRing {
 		return keyID;
 	}
 	
-	public void setKeyPair(KeyPair keyPair) {
-		this.keyPair = keyPair;
-		this.publicKey = this.keyPair.getPublic();
-		this.privateKey = this.keyPair.getPrivate();
-		
-		// set keyID
-		//this.keyID=this.publicKey & ((1 << 64) - 1);
-	}
+//	public void setKeyPair(KeyPair keyPair) {
+//		this.keyPair = keyPair;
+//		this.publicKey = this.keyPair.getPublic();
+//		this.privateKey = this.keyPair.getPrivate();
+//		
+//		// set keyID
+//		//this.keyID=this.publicKey & ((1 << 64) - 1);
+//	}
 	
 	public String getPublicKey() {
 		if(this.publicKey == null) return "";
@@ -51,8 +57,8 @@ public class PrivateKeyRing {
 	
 	public String getEncryptedPrivateKey() {
 		if(this.privateKey == null) return "";
-		return this.privateKey.toString();
-		//return new String(Base64.encode(this.privateKey.getEncoded(), 0, this.privateKey.getEncoded().length));
+		// treba sifrovati kljuc
+		return new String(Base64.encode(this.privateKey.getEncoded(), 0, this.privateKey.getEncoded().length));
 	}
 	
 	public String getUserID() {

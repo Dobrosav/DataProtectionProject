@@ -5,7 +5,7 @@ import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
 import java.security.PublicKey;
-import java.sql.Timestamp;
+import java.time.LocalDateTime;  
 
 import org.bouncycastle.util.encoders.Base64;
 
@@ -14,7 +14,7 @@ import etf.openpgp.ma180126d.AsymmetricKeys;
 public class DSA  extends AsymmetricKeys {
 	public void generate(int size, String mail, String name, String password) {
 		try {
-			Timestamp t=new Timestamp(System.currentTimeMillis());
+			LocalDateTime t=java.time.LocalDateTime.now();
 			KeyPairGenerator kpg= KeyPairGenerator.getInstance("DSA");
 			kpg.initialize(size);
 			KeyPair key=kpg.generateKeyPair();
