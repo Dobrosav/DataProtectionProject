@@ -14,22 +14,23 @@ import etf.openpgp.vd180005d.KeySaveStructure;
 
 public class ElGamal extends AsymmetricKeys {
 	
-	public void generate (int size, String mail, String name, String password) {
+	public KeyPair generate (int size, String mail, String name, String password) {
 		
 		try {
 			LocalDateTime time = java.time.LocalDateTime.now();
 			KeyPairGenerator kpg= KeyPairGenerator.getInstance("ELGAMAL", "BC");
 			kpg.initialize(size);
-			KeyPair key = kpg.generateKeyPair();
-			PrivateKey priv = key.getPrivate();
-			PublicKey pub = key.getPublic();
+			KeyPair keyPair = kpg.generateKeyPair();
+			
+			PrivateKey priv = keyPair.getPrivate();
+			PublicKey pub = keyPair.getPublic();
 			
 			KeySaveStructure kss = new KeySaveStructure();
 			kss.setIme(name);
-			kss.setKeyPair(key);
+			kss.setKeyPair(keyPair);
 			kss.setMail(mail);
 			kss.setPassword(password);
-			kss.setTime(time);
+//			kss.setTime(time);
 			kss.setAlgo("Elgamal");
 			keys.add(kss);
 			
@@ -39,13 +40,16 @@ public class ElGamal extends AsymmetricKeys {
 			
 			System.out.println(privateKey);
 			System.out.println(publicKey);
+
+			return keyPair;
 			
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 		} catch (NoSuchProviderException e) {
 			e.printStackTrace();
 		}
-		
+
+		return null;
 	}
 
 	public static void main(String[] args) {

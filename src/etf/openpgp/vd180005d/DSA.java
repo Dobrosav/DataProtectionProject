@@ -12,7 +12,7 @@ import org.bouncycastle.util.encoders.Base64;
 import etf.openpgp.ma180126d.AsymmetricKeys;
 
 public class DSA  extends AsymmetricKeys {
-	public void generate(int size, String mail, String name, String password) {
+	public KeyPair generate(int size, String mail, String name, String password) {
 		try {
 			LocalDateTime t=java.time.LocalDateTime.now();
 			KeyPairGenerator kpg= KeyPairGenerator.getInstance("DSA");
@@ -25,7 +25,7 @@ public class DSA  extends AsymmetricKeys {
 			kss.setKeyPair(key);
 			kss.setMail(mail);
 			kss.setPassword(password);
-			kss.setTime(t);
+//			kss.setTime(t);
 			kss.setAlgo("DSA");
 			keys.add(kss);
 			String privateKey = new String(Base64.encode(priv.getEncoded(), 0,priv.getEncoded().length));
@@ -33,10 +33,13 @@ public class DSA  extends AsymmetricKeys {
 			String publicKey = new String(Base64.encode(publicKey1.getBytes(),0, publicKey1.getBytes().length));
 			System.out.println(privateKey);
 			System.out.println(publicKey);
+			return key;
 		} catch (NoSuchAlgorithmException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
+		
+		return null;
 		
 	}
 	public static void main(String[] args) {

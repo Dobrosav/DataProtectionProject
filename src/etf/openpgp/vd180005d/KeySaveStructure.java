@@ -1,7 +1,8 @@
 package etf.openpgp.vd180005d;
 
 import java.security.KeyPair;
-import java.time.LocalDateTime; 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 public class KeySaveStructure {
 	private KeyPair keyPair;
@@ -14,10 +15,10 @@ public class KeySaveStructure {
 	public KeySaveStructure() {
 		id=next++;
 	}
-	public LocalDateTime getTime() {
+	public Timestamp getTime() {
 		return time;
 	}
-	public void setTime(LocalDateTime time) {
+	public void setTime(Timestamp time) {
 		this.time = time;
 	}
 	public KeyPair getKeyPair() {
