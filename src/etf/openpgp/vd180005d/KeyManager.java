@@ -6,6 +6,8 @@ import etf.openpgp.ma180126d.entites.SecretKeyInfo;
 import etf.openpgp.ma180126d.entites.User;
 import etf.openpgp.ma180126d.keymaterial.KeyMaterial;
 import etf.openpgp.ma180126d.keymaterial.SubkeyMaterial;
+import javafx.util.Pair;
+
 import org.bouncycastle.bcpg.ArmoredInputStream;
 import org.bouncycastle.bcpg.ArmoredOutputStream;
 import org.bouncycastle.bcpg.HashAlgorithmTags;
@@ -95,20 +97,21 @@ public class KeyManager {
 		return signatureSubPacketGenerator.generate();
 	}
 
-	public static final void generateKeys(User user, KeyMaterial keyMaterial, SubkeyMaterial subkeyMaterial) throws PGPException  {
-       	    	KeyPair keyPair;
-				keyPair = generateKeyPair(keyMaterial);
+	public static final Pair<PublicKeyInfo, SecretKeyInfo> generateKeys(User user, KeyMaterial keyMaterial, SubkeyMaterial subkeyMaterial) throws NoSuchAlgorithmException, NoSuchProviderException, PGPException {
+        KeyPair keyPair = generateKeyPair(keyMaterial);
+        KeyPair subkeyPair = generateSubkeyPair(subkeyMaterial);
+        PGPKeyRingGenerator pgpKeyRingGenerator = createKeyRingGenerator(user, keyPair, subkeyPair);
 
-      KeyPair subkeyPair = generateSubkeyPair(subkeyMaterial);
-      PGPKeyRingGenerator pgpKeyRingGenerator = createKeyRingGenerator(user, keyPair, subkeyPair);
+        PGPPublicKeyRing publicKeyRing = pgpKeyRingGenerator.generatePublicKeyRing();
+        PUBLIC_KEY_RINGS = PGPPublicKeyRingCollection.addPublicKeyRing(PUBLIC_KEY_RINGS, publicKeyRing);
+        exportPublicKeyRings();
 
-      PGPPublicKeyRing publicKeyRing = pgpKeyRingGenerator.generatePublicKeyRing();
-      PUBLIC_KEY_RINGS = PGPPublicKeyRingCollection.addPublicKeyRing(PUBLIC_KEY_RINGS, publicKeyRing);
-      exportPublicKeyRings();
+        PGPSecretKeyRing secretKeyRing = pgpKeyRingGenerator.generateSecretKeyRing();
+        SECRET_KEY_RINGS = PGPSecretKeyRingCollection.addSecretKeyRing(SECRET_KEY_RINGS, secretKeyRing);
+        exportSecretKeyRings();
 
-      PGPSecretKeyRing secretKeyRing = pgpKeyRingGenerator.generateSecretKeyRing();
-      SECRET_KEY_RINGS = PGPSecretKeyRingCollection.addSecretKeyRing(SECRET_KEY_RINGS, secretKeyRing);
-      exportSecretKeyRings(); 
+        return new Pair<>(new PublicKeyInfo(publicKeyRing.getPublicKey()), new SecretKeyInfo(secretKeyRing.getSecretKey()));
+
     }
 
 	private static final KeyPair generateSubkeyPair(SubkeyMaterial subkeyMaterial) {
