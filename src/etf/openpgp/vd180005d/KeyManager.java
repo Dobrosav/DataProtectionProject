@@ -41,6 +41,9 @@ public class KeyManager {
 		loadKeyRings();
 	}
 
+	/*
+	 * Load Key Rings from the Files
+	 */
 	private static void loadKeyRings() {
 		try {
 			File publicKeyRingFile = new File(PUBLIC_KEY_RING_FILE_PATH);
@@ -301,11 +304,12 @@ public class KeyManager {
 
 	public static PGPSecretKeyRing getSecretKeyRing(long keyID) throws PGPException {
 		return SECRET_KEY_RINGS.getSecretKeyRing(keyID);
-
+		// private?
 	}
 
 	public static PGPSecretKey getSecretKey(long keyId) throws PGPException {
 		return SECRET_KEY_RINGS.getSecretKey(keyId);
+		// private?
 	}
 
 	public static PGPPublicKey getPublicKey(long keyId) throws PGPException {

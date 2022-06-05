@@ -18,7 +18,7 @@ public class MainGui extends Application {
 	public void start(Stage arg0) throws Exception {
 		// TODO Auto-generated method stub
 		Parent root = FXMLLoader.load(this.getClass().getClassLoader().getResource("home.fxml"));
-        arg0.setTitle("Alex&Dobri Crypto");
+        // arg0.setTitle("Alex&Dobri Crypto");
         Scene scene = new Scene(root);
         scene.getStylesheets().add(this.getClass().getClassLoader().getResource("style.css").toExternalForm());
         UIUtils.setStage(arg0);

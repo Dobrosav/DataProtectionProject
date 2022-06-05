@@ -115,7 +115,7 @@
     -fx-background-insets: 0;
 }
 .text-field-encrypt {
-    -fx-background-color:  white;
+    -fx-background-color:  black;
     -fx-border-color     : green;
 }
 .list-view-encrypt {
@@ -144,12 +144,12 @@
     -fx-cursor: hand;
 }
 
-/*.button-encrypt:hover {
+.button-encrypt:hover {
     -fx-text-fill: green;
-}*/
+}
 
 #encrypt-sign-button {
-    -fx-text-fill: black;
+    -fx-text-fill: green;
 }
 #encrypt-sign-button:hover {
     -fx-text-fill: black;
@@ -166,15 +166,14 @@
 .button-keyManagement {
     -fx-background-color: white;
     -fx-background-insets: 0,1,2;
-    -fx-border-color: black;
+    -fx-border-color: orange;
 
     -fx-text-fill: black;
     -fx-cursor: hand;
 }
-
-/*.button-keyManagement:hover {
+.button-keyManagement:hover {
     -fx-text-fill: orange;
-}*/
+}
 
 .check-box-keyManagement .box{
     -fx-border-color:orange;
@@ -188,7 +187,7 @@
 
 
 .hyperlink {
-    -fx-text-fill: black;
+    -fx-text-fill: orange;
 }
 .hyperlink:hover {
     -fx-text-fill: black;
@@ -259,28 +258,26 @@
     -fx-background-color:  transparent;
 }*/
 .text-field-keyManagement, .list-view-keyManagement {
+    -fx-background-color:  transparent;
     -fx-border-color     : black;
 }
 
 
 #generateKeysDialog .button {
-    -fx-background-color:transparent;
     -fx-text-fill:black;
-    -fx-cursor:hand;
-    -fx-border-color: black;
 }
 
-/*#generateKeysDialog .button:hover {
-    -fx-text-fill: orange;
-}*/
+#generateKeysDialog .button:hover {
+}
 
 .list-view-keyManagement {
-    -fx-border-color     : black;
+    -fx-background-color:  transparent;
+    -fx-border-color     : orange;
     -fx-padding: 0em;
 }
 .list-view-keyManagement .list-cell {
     -fx-text-fill: white;
-    -fx-border-color     :black;
+    -fx-border-color     :orange;
     -fx-border-style    : hidden hidden solid hidden;
     -fx-cursor: hand;
 
@@ -305,9 +302,9 @@
     -fx-text-fill: black;
     -fx-cursor: hand;
 }
-/*.decryptVerify-button:hover {
+.decryptVerify-button:hover {
 -fx-text-fill: blue;
-}*/
+}
 
 .check-box-decrypt .box{
     -fx-border-color: blue;

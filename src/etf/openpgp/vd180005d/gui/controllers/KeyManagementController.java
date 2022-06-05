@@ -268,7 +268,7 @@ public class KeyManagementController {
 
     @FXML
     private void initialize() {
-        imageViewBack.setImage(new Image(this.getClass().getClassLoader().getResource("backTeal.png").toExternalForm()));
+        imageViewBack.setImage(new Image(this.getClass().getClassLoader().getResource("back.png").toExternalForm()));
         initializeTables();
         statusLabel.setText("");
     }

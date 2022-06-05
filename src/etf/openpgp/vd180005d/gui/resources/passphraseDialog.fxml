@@ -19,7 +19,7 @@
       <Insets top="20.0" />
    </padding>
    <header>
-      <Label fx:id="label" prefHeight="41.0" prefWidth="265.0" styleClass="text" text="Enter the passphrase to delete the key:" wrapText="true">
+      <Label fx:id="label" prefHeight="41.0" prefWidth="265.0" styleClass="text" text="Enter passphrase to delete the key:" wrapText="true">
          <font>
             <Font size="14.0" />
          </font>
@@ -38,8 +38,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                
-                <PasswordField fx:id="passphraseField" prefHeight="31.0" prefWidth="123.0" styleClass="text-field-keyManagement" GridPane.columnIndex="1">
+                <PasswordField fx:id="passphraseField" prefHeight="31.0" prefWidth="223.0" styleClass="text-field-keyManagement" GridPane.columnIndex="0">
                     <font>
                         <Font size="14.0" />
                     </font>

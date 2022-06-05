@@ -170,7 +170,7 @@ public class EncryptPageController {
     @FXML
     private void initialize() {
 
-        imageViewBack.setImage(new Image(this.getClass().getClassLoader().getResource("backBlue.png").toExternalForm()));
+        imageViewBack.setImage(new Image(this.getClass().getClassLoader().getResource("back.png").toExternalForm()));
 
         this.symmetricAlgorithm.getToggles().get(0).setUserData(PGPEncryptedData.TRIPLE_DES);
         this.symmetricAlgorithm.getToggles().get(1).setUserData(PGPEncryptedData.AES_128);

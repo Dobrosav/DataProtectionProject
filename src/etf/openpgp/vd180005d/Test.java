@@ -1,6 +1,9 @@
 package etf.openpgp.vd180005d;
 
 
+import java.security.NoSuchAlgorithmException;
+import java.security.NoSuchProviderException;
+
 import org.bouncycastle.openpgp.PGPException;
 
 import etf.openpgp.ma180126d.entites.User;
@@ -13,6 +16,12 @@ public class Test {
 			KeyManager.generateKeys(new User("dodo","dodo@gmail.com","123"),KeyMaterial.DSA_1024 , SubkeyMaterial.EL_GAMAL_2048);
 			
 		} catch (PGPException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchProviderException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

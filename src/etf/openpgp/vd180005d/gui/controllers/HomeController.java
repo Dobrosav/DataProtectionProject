@@ -14,25 +14,20 @@ import javafx.scene.layout.StackPane;
 
 public class HomeController {
 
-
     @FXML
     private ImageView imageViewLocked;
-
     @FXML
     private ImageView imageViewUnlocked;
-
     @FXML
     private ImageView imageViewKeys;
 
-    private static boolean welcomeShown = false;
-
     @FXML
     private void initialize() {
-        if (welcomeShown)
-            this.hide(null);
-        imageViewLocked.setImage(new Image(this.getClass().getClassLoader().getResource("locked.png").toExternalForm()));
-        imageViewKeys.setImage(new Image(this.getClass().getClassLoader().getResource("keys.png").toExternalForm()));
-        imageViewUnlocked.setImage(new Image(this.getClass().getClassLoader().getResource("unlocked.png").toExternalForm()));
+    	this.welcome.setVisible(false);
+        this.home.setVisible(true);
+        imageViewLocked.setImage(new Image(this.getClass().getClassLoader().getResource("first.png").toExternalForm()));
+        imageViewKeys.setImage(new Image(this.getClass().getClassLoader().getResource("second.png").toExternalForm()));
+        imageViewUnlocked.setImage(new Image(this.getClass().getClassLoader().getResource("third.png").toExternalForm()));
     }
 
     @FXML
@@ -48,7 +43,6 @@ public class HomeController {
     private void hide(MouseEvent event) {
         this.welcome.setVisible(false);
         this.home.setVisible(true);
-        welcomeShown=true;
     }
 
     @FXML

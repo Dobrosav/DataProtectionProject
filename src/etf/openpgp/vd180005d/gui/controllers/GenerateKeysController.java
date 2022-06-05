@@ -4,6 +4,7 @@ package etf.openpgp.vd180005d.gui.controllers;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
 
 import java.security.Key;
@@ -29,7 +30,10 @@ public class GenerateKeysController {
 
     @FXML
     private void initialize() {
-        singatureListView.getItems().addAll(KeyMaterial.values());
+        //singatureListView.getItems().addAll(KeyMaterial.values());
+    	//singatureListView = new ListView<KeyMaterial>();
+        singatureListView.getItems().add(KeyMaterial.DSA_1024);
+        singatureListView.getItems().add(KeyMaterial.DSA_2048);
         singatureListView.getSelectionModel().select(KeyMaterial.DSA_1024);
         encryptionListView.getItems().addAll(SubkeyMaterial.values());
         encryptionListView.getSelectionModel().select(SubkeyMaterial.EL_GAMAL_1024);

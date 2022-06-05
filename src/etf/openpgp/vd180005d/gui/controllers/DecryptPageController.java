@@ -216,7 +216,7 @@ public class DecryptPageController {
 
     @FXML
     private void initialize() {
-        imageViewBack.setImage(new Image(this.getClass().getClassLoader().getResource("backRed.png").toExternalForm()));
+        imageViewBack.setImage(new Image(this.getClass().getClassLoader().getResource("back.png").toExternalForm()));
     }
 
 }
