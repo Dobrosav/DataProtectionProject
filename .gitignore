@@ -1,1 +1,33 @@
-/bin/
+# Java
+*.class
+*.jar
+*.war
+*.ear
+*.log
+
+# Build
+bin/
+build/
+target/
+
+# IDE
+.project
+.classpath
+.settings/
+.idea/
+*.iml
+*.iws
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Keys (private keys should not be committed)
+keys/
+*key_ring*
+test_*_key_*.gpg
+*.gpg
+
+# Documentation (optional)
+documentation/
